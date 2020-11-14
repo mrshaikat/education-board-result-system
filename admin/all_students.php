@@ -57,7 +57,7 @@ $all_row = $data -> num_rows ;
                 </td>
 
                 <td>
-                    <button class=" btn btn-info btn-sm">Add Result</button>
+                    <a href="add_result.php?id=<?php echo $all_student['student_id']; ?>" class="btn btn-info btn-sm">Add Result</a>
                 </td>
 
             </tr>
