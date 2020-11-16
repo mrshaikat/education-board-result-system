@@ -101,6 +101,40 @@ function checkGpa($mark ){
 		}
 
 		return $result;
-	}
+     }
+     
+
+     function checkGrade($student_cgpa){
+
+          if($student_cgpa == 5){
+               $grade = 'A+';
+          }elseif( $student_cgpa >= 4 && $student_cgpa < 5 ){
+               $grade = 'A';
+          }elseif($student_cgpa >= 3.5 && $student_cgpa < 4 ){
+               $grade = 'A-';
+          }elseif($student_cgpa >= 3 && $student_cgpa < 3.5){
+               $grade = 'B';
+          }elseif($student_cgpa >= 2 && $student_cgpa < 3){
+               $grade = 'C';
+          }elseif($student_cgpa >= 1 && $student_cgpa < 2){
+               $grade = 'D';
+          }else{
+               $grade = 'F';
+          }
+     
+
+     return $grade;
+
+     }
+
+     // Check result 
+	function checkResults($roll, $reg,  $connection ) {
+		$sql = "SELECT * FROM student_results WHERE roll= '$roll' AND reg='$reg'";
+		$data = $connection  -> query($sql);
+
+		return $data -> num_rows;
+
+     }
+     
 
 ?>

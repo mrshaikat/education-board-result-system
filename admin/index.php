@@ -32,7 +32,7 @@
 
         if(  empty($email) || empty($pass)){
 
-            $message = "<p class='alert alert-danger text-center'>Fild Must Not Be Empty!! <button class='close' data-dismiss='alert'>&times;</button> </p>";
+            $message = "<p class='alert alert-danger text-center'><strong>Fild Must Not Be Empty</strong>!! <button class='close' data-dismiss='alert'>&times;</button> </p>";
 
         }
          else{
@@ -53,13 +53,13 @@
                 header("location:dashboard.php");
 
                }else{
-                $message = "<p class='alert alert-danger text-center'>Wrong Password!! <button class='close' data-dismiss='alert'>&times;</button> </p>";
+                $message = "<p class='alert alert-danger text-center'><strong>Wrong Password</strong> !! <button class='close' data-dismiss='alert'>&times;</button> </p>";
                }
                
 
             }else{
 
-                $message = "<p class='alert alert-danger text-center'>E-mail Not valid!! <button class='close' data-dismiss='alert'>&times;</button> </p>";
+                $message = "<p class='alert alert-danger text-center'><strong>E-mail Not valid</strong> !! <button class='close' data-dismiss='alert'>&times;</button> </p>";
 
             }
 

@@ -24,14 +24,14 @@ $all_row = $data -> num_rows ;
                 <div class="scrollable">
                 <table class="table table-striped table-hover">
                     <thead class="thead-dark">
-    <th>SL</th>
-    <th>Name</th>
-    <th>Roll</th>
-    <th>Reg</th>
-    <th>Board</th>
-    <th>Institue</th>
-    <th>Photo</th>
-    <th>Action</th>
+                        <th>SL</th>
+                        <th>Name</th>
+                        <th>Roll</th>
+                        <th>Reg</th>
+                        <th>Board</th>
+                        <th>Institue</th>
+                        <th>Photo</th>
+                        <th>Action</th>
                     </thead>
 
                     <tbody>
@@ -39,6 +39,11 @@ $all_row = $data -> num_rows ;
 
                         $sql = "SELECT * from student_info ";
                         $data = $connection -> query($sql);
+
+                        $sql = "SELECT * from student_results ";
+                        $num = $connection -> query($sql);
+                        $student_data = $num -> fetch_assoc();
+
 
                        $i=1;
                       
@@ -57,7 +62,26 @@ $all_row = $data -> num_rows ;
                 </td>
 
                 <td>
+                        
+                        <?php 
+                        
+                            $res_num = checkResults($all_student['roll'], $all_student['reg'], $connection );
+
+                            if($res_num == 0) : 
+                        
+                        ?>
+
+
                     <a href="add_result.php?id=<?php echo $all_student['student_id']; ?>" class="btn btn-info btn-sm">Add Result</a>
+
+                        <?php else : ?>
+
+
+                            <a href="update_student.php?id=<?php echo $student_data['student_id']; ?>" class="btn btn-warning btn-sm">Edit Result</a>
+
+                         <?php endif ?>   
+
+
                 </td>
 
             </tr>
