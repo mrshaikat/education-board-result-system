@@ -38,8 +38,12 @@ $all_row = $data -> num_rows ;
                     <?php 
 
                         
-                        $sql = "SELECT * from student_results ";
+                        $sql = "SELECT * from student_info ";
                         $data = $connection -> query($sql);
+
+                        $sql = "SELECT * from student_results ";
+                        $num = $connection -> query($sql);
+                        $all_student_data = $num -> fetch_assoc() ;
                         
 
 
@@ -75,7 +79,7 @@ $all_row = $data -> num_rows ;
                         <?php else : ?>
 
 
-                            <a href="update_student.php?id=<?php echo $all_student['student_id']; ?>" class="btn btn-warning btn-sm">Edit Result</a>
+                            <a href="update_student.php?id=<?php echo $all_student_data['student_id']; ?>" class="btn btn-warning btn-sm">Edit Result</a>
 
                          <?php endif ?>   
 

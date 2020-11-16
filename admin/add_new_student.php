@@ -63,7 +63,7 @@
              }
             else{
 
-                $sql = "INSERT INTO student_info(name, roll, reg,board, ins, photo, status) VALUES('$name', '$roll', '$reg', '$board','$ins', '$picture_uniqueName','Active') ";
+                $sql = "INSERT INTO student_info(name, roll, reg, board, ins, photo, status) VALUES('$name', '$roll', '$reg', '$board','$ins', '$picture_uniqueName','Active') ";
 
                     $connection -> query($sql);
 
@@ -105,7 +105,7 @@
 						
                         <div class="form-group">
 						  <label for="">Reg.No</label>
-						  <input name="reg" class=" form-control" type="number">
+						  <input name="reg" class=" form-control" type="text">
 					  </div>
 
                                 
