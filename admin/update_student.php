@@ -25,28 +25,25 @@
 
                                                 if( isset( $_POST['submit'] ) ){
 
-                                                    $sql = "SELECT * FROM student_results WHERE student_id = '$sid'";
-                                                    $data =  $connection -> query( $sql);
+                                                    
 
-                                                    $data_by_id = $data -> fetch_assoc();
-
-                                                    $name = $data_by_id['name'];
+                                                    $name = $_POST['name'];
 
                                                     //Roll number cheek
-                                                    $roll = $data_by_id['roll'];
+                                                    $roll = $_POST['roll'];
                                                     $rollNumberCheck = rollNumberCheck($roll, $connection);
 
                                                     //registration number check
-                                                    $reg = $data_by_id['reg'];
+                                                    $reg = $_POST['reg'];
                                                     $regNumberCheck = regNumberCheck($reg, $connection);
 
-                                                    $board = $data_by_id['board'];
-                                                    $institute = $data_by_id['ins'];
+                                                    $board = $_POST['board'];
+                                                    $institute = $_POST['ins'];
                                                     
 
                                                     //Photo Update System
                                                    
-                                                    $old_photo= $data_by_id['photo'];
+                                                    $old_photo = $_POST['old_photo'];
 
                                                      
 
@@ -238,6 +235,7 @@
                                         <div class="form-group col-md-6">
                                         <label for="">Update Picture</label>
                                         <input name="new_photo" type="file" class="" id="">
+                                        <input name="old_photo" type="hidden" value="<?php echo $single_data['photo']; ?>">
                                         
                                         </div>
                                         <div class="form-group col-md-6">
