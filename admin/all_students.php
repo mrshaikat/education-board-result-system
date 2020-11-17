@@ -75,7 +75,7 @@ $all_row = $data -> num_rows ;
 
 
                 <a href="info_update.php?id=<?php echo $all_student['student_id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                <a href="inc/delete_student.php?id=<?php echo $all_student['student_id']; ?>&sphoto=<?php echo $all_student['photo']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                <a href="inc/delete_student.php?id=<?php echo $all_student['student_id']; ?>&sphoto=<?php echo $all_student['photo']; ?>&resultid=<?php echo $all_data['student_id']; ?>" class="btn btn-danger btn-sm">Delete</a>
 
                         <?php 
                         

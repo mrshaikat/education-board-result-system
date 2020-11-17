@@ -8,7 +8,7 @@
 
     <?php 
 
-    if(isset($_GET['id'])){
+    if(isset($_GET['id']) ){
         $sid= $_GET['id'];
 
     }else{
@@ -40,7 +40,7 @@
             $eng_gpa = checkGpa($eng );
 
             $math = $_POST['math'];
-            $math_g = checkGrad($math);
+            echo $math_g = checkGrad($math);
             $math_gpa = checkGpa($math );
 
             $science = $_POST['science'];
