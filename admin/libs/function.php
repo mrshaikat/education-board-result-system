@@ -104,22 +104,28 @@ function checkGpa($mark ){
      }
      
 
-     function checkGrade($student_cgpa){
+     function checkGrade($student_cgpa, $ban_gpa, $eng_gpa, $math_gpa, $s_gpa, $ss_gpa, $r_gpa){
 
-          if($student_cgpa == 5){
-               $grade = 'A+';
-          }elseif( $student_cgpa >= 4 && $student_cgpa < 5 ){
-               $grade = 'A';
-          }elseif($student_cgpa >= 3.5 && $student_cgpa < 4 ){
-               $grade = 'A-';
-          }elseif($student_cgpa >= 3 && $student_cgpa < 3.5){
-               $grade = 'B';
-          }elseif($student_cgpa >= 2 && $student_cgpa < 3){
-               $grade = 'C';
-          }elseif($student_cgpa >= 1 && $student_cgpa < 2){
-               $grade = 'D';
-          }else{
+          if($ban_gpa == 0 || $eng_gpa == 0 || $math_gpa == 0 || $s_gpa == 0 || $ss_gpa == 0 || $r_gpa == 0){
+
                $grade = 'F';
+
+          }else{
+               if($student_cgpa == 5){
+                    $grade = 'A+';
+               }elseif( $student_cgpa >= 4 && $student_cgpa < 5 ){
+                    $grade = 'A';
+               }elseif($student_cgpa >= 3.5 && $student_cgpa < 4 ){
+                    $grade = 'A-';
+               }elseif($student_cgpa >= 3 && $student_cgpa < 3.5){
+                    $grade = 'B';
+               }elseif($student_cgpa >= 2 && $student_cgpa < 3){
+                    $grade = 'C';
+               }elseif($student_cgpa >= 1 && $student_cgpa < 2){
+                    $grade = 'D';
+               }else{
+                    $grade = 'F';
+               }
           }
      
 

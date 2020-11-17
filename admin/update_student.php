@@ -9,7 +9,7 @@
                             <section class="panel b-a" style=" min-height:500px;">
 
 
-                                <div class="panel-heading b-b"> <a href="#" class="font-bold">Add new Students</a> </div>
+                                <div class="panel-heading b-b"> <a href="#" class="font-bold">Update Student Result</a> </div>
 
                                 <div class="card " style="padding:0px 50px 50px 50px;">
                                   <div class="card-body">
@@ -25,25 +25,33 @@
 
                                                 if( isset( $_POST['submit'] ) ){
 
+                                                    $sql = "SELECT * FROM student_info WHERE student_id = '$sid' ";
+                                                    $data =  $connection -> query( $sql);
+                                        
+                                                    $data_by_id = $data -> fetch_assoc();
+                                        
+                                                      $name = $data_by_id['name'];
+                                                      $roll = $data_by_id['roll'];
+                                                      $rollNumberCheck = rollNumberCheck($roll, $connection);
+
+                                                      $reg = $data_by_id['reg'];
+                                                      $regNumberCheck = regNumberCheck($reg, $connection);
+
+                                                      $board = $data_by_id['board'];
+                                                      $institute = $data_by_id['ins'];
+                                                      
+
+
+
                                                     
 
-                                                    $name = $_POST['name'];
+                                                   
 
-                                                    //Roll number cheek
-                                                    $roll = $_POST['roll'];
-                                                    $rollNumberCheck = rollNumberCheck($roll, $connection);
-
-                                                    //registration number check
-                                                    $reg = $_POST['reg'];
-                                                    $regNumberCheck = regNumberCheck($reg, $connection);
-
-                                                    $board = $_POST['board'];
-                                                    $institute = $_POST['ins'];
                                                     
 
                                                     //Photo Update System
                                                    
-                                                    $old_photo = $_POST['old_photo'];
+                                                    $old_photo = $data_by_id['photo'];
 
                                                      
 
@@ -80,7 +88,7 @@
 
                                                     $result = checkResult($ban_gpa, $eng_gpa, $math_gpa, $s_gpa, $ss_gpa, $r_gpa);
 
-                                                    $tgrade = checkGrade($student_cgpa);
+                                                    $tgrade = checkGrade($student_cgpa, $ban_gpa, $eng_gpa, $math_gpa, $s_gpa, $ss_gpa, $r_gpa);
 
                                                     $cgpa = round($student_cgpa );
 
@@ -160,90 +168,55 @@
                                     <form action="<?php  echo $_SERVER['PHP_SELF'];?>?id=<?php echo $sid;  ?>" method="POST" enctype="multipart/form-data">
 
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                        <label for="">Student Name</label>
-                                        <input name="name" type="text" class="form-control" value="<?php echo $single_data['name']; ?>">
-                                        </div>
+                                        
                                         <div class="form-group col-md-6">
                                         <label for="">Bangla Mark</label>
                                         <input name="ban" type="text" class="form-control" value="<?php echo $single_data['ban_m']; ?>">
                                         </div>
-                                        
-
-
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                        <label for="">Roll Number</label>
-                                        <input name="roll" type="text" class="form-control" value="<?php echo $single_data['roll']; ?>">
-                                        </div>
-
                                         <div class="form-group col-md-6">
                                         <label for="">English Mark </label>
                                         <input name="eng" type="text" class="form-control" value="<?php echo $single_data['en_m']; ?>">
                                         </div>
                                         
-                                        
+
+
                                     </div>
 
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                        <label for="">Registration No</label>
-                                        <input name="reg" type="number" class="form-control" value="<?php echo $single_data['reg']; ?>">
-                                        </div>
-
-                                        <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6">
                                         <label for="">Mathmatics Mark</label>
                                         <input name="math" type="text" class="form-control" value="<?php echo $single_data['math_m']; ?>">
                                         </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                        <label for="">Board Name</label> <br>
-                                            <select name="board" id="">
-                                                <option value="<?php echo $single_data['board']; ?>"><?php echo $single_data['board']; ?></option>
-                                                <option value="Jessore">Jessore</option>
-                                                <option value="Barishal">Barishal</option>
-                                                <option value="Comillha">Comillha</option>
-                                                <option value="Dhaka">Dhaka</option>
-                                                <option value="Chattagong">Chattagong</option>
-                                            </select>
-                          
-                                        </div>
-
 
                                         <div class="form-group col-md-6">
                                         <label for="">Science Mark</label>
                                         <input name="science" type="text" class="form-control" value="<?php echo $single_data['s_m']; ?>">
                                         </div>
+
+                                       
+                                        
+                                        
                                     </div>
 
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                        <label for="">Institute Name</label>
-                                        <input name="ins" type="text" class="form-control" value="<?php echo $single_data['ins']; ?>">
-                                        </div>
-                                        <div class="form-group col-md-6">
+                                        
+                                    <div class="form-group col-md-6">
                                         <label for="">Social-sciece Mark </label>
                                         <input name="ss" type="text" class="form-control" value="<?php echo $single_data['ss_m']; ?>">
                                         </div>
+                                        
                                     </div>
 
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                        <label for="">Update Picture</label>
-                                        <input name="new_photo" type="file" class="" id="">
-                                        <input name="old_photo" type="hidden" value="<?php echo $single_data['photo']; ?>">
-                                        
-                                        </div>
-                                        <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6">
                                         <label for="">Religion Mark</label>
                                         <input name="religion" type="text" class="form-control" value="<?php echo $single_data['r_m']; ?>">
                                         </div>
-                                    </div>
 
+                                    
+
+                                    
+
+                                   
 
                                       
                                       
@@ -252,7 +225,7 @@
 
                                       <div class="form-group">
                                     
-                                        <input name="submit" class="btn btn-success" type="submit" value="Add student">
+                                        <input name="submit" class="btn btn-success" type="submit" value="Result Update">
                                       </div>
 
                                     </form>

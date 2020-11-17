@@ -20,7 +20,8 @@
             $reg = $_POST['reg'];
             $regNumberCheck = regNumberCheck($reg, $connection);
 
-
+            $exam = $_POST['exam'];
+            $year = $_POST['year'];
             $board = $_POST['board'];
             $ins = $_POST['ins'];
             $sphoto = $_FILES['sphoto'];
@@ -39,7 +40,7 @@
             $picture_uniqueName = md5( time().rand()).".".$picture_orginal_extension;
 
 
-            if( empty($name) || empty($roll) || empty($reg) || empty($ins) || empty($board) ){
+            if( empty($name) || empty($roll) || empty($reg) || empty($ins) || empty($exam) || empty($year) || empty($board) ){
 
                $message = "<p class='alert alert-danger text-center'>Fild Must Not Be Empty!! <button class='close' data-dismiss='alert'>&times;</button> </p>";
             }
@@ -63,7 +64,7 @@
              }
             else{
 
-                $sql = "INSERT INTO student_info(name, roll, reg, board, ins, photo, status) VALUES('$name', '$roll', '$reg', '$board','$ins', '$picture_uniqueName','Active') ";
+                $sql = "INSERT INTO student_info(name, roll, reg, exam, year, board, ins, photo, status) VALUES('$name', '$roll', '$reg','$exam', '$year', '$board','$ins', '$picture_uniqueName','Active') ";
 
                     $connection -> query($sql);
 
@@ -112,15 +113,73 @@
 					  
 
 					  <div class="form-group">
-					  <label for="">Board</label>
-						  <select name="board" id="">
-							  <option value="Jessore">Jessore</option>
-							  <option value="Barishal">Barishal</option>
-							  <option value="Comillha">Comillha</option>
-							  <option value="Dhaka">Dhaka</option>
-							  <option value="Chattagong">Chattagong</option>
-						  </select>
+					  <label for="">Examination</label>
+                      <select name="exam">
+	                            <option value="hsc">HSC/Alim/Equivalent</option>
+	                            <option value="jsc">JSC/JDC</option>
+	                            <option value="ssc">SSC/Dakhil</option>
+								<option value="ssc_voc">SSC(Vocational)</option>
+	                            <option value="hsc">HSC/Alim</option>
+								<option value="hsc_voc">HSC(Vocational)</option>
+								<option value="hsc_hbm">HSC(BM)</option>
+								<option value="hsc_dic">Diploma in Commerce</option>
+								<option value="hsc">Diploma in Business Studies</option>
+                          	</select>
                       </div>
+
+                      <div class="form-group">
+					  <label for="">Exam Year</label>
+                      <select name="year">
+                            <option value="0000" selected>Select One</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                            <option value="2014">2014</option>
+                            <option value="2013">2013</option>
+                            <option value="2012">2012</option>
+                            <option value="2011">2011</option>
+                            <option value="2010">2010</option>
+                            <option value="2009">2009</option>
+                            <option value="2008">2008</option>
+                            <option value="2007">2007</option>
+                            <option value="2006">2006</option>
+                            <option value="2005">2005</option>
+                            <option value="2004">2004</option>
+                            <option value="2003">2003</option>
+                            <option value="2002">2002</option>
+                            <option value="2001">2001</option>
+                            <option value="2000">2000</option>
+                            <option value="1999">1999</option>
+                            <option value="1998">1998</option>
+                            <option value="1997">1997</option>
+                            <option value="1996">1996</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group">
+					  <label for="">Board Name</label>
+                      <select name="board">
+		                          <option value=""selected>Select One</option>
+								  <option value="barisal">Barisal</option>
+								  <option value="chittagong">Chittagong</option>
+								  <option value="comilla">Comilla</option>
+		                          <option value="dhaka">Dhaka</option>
+								  <option value="dinajpur">Dinajpur</option>
+								  <option value="jessore">Jessore</option>
+		                          <option value="rajshahi">Rajshahi</option>
+		                          <option value="sylhet">Sylhet</option>
+		                          <option value="madrasah">Madrasah</option>
+								  <option value="tec">Technical</option>
+								  <option value="dibs">DIBS(Dhaka)</option>
+                          	</select>
+                      </div>
+
+
+
+
                       
                       <div class="form-group">
 						  <label for="">Institute</label>

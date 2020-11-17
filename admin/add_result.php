@@ -60,7 +60,7 @@
 
             $result = checkResult($ban_gpa, $eng_gpa, $math_gpa, $s_gpa, $ss_gpa, $r_gpa);
 
-            $tgrade = checkGrade($student_cgpa);
+            $tgrade = checkGrade($student_cgpa, $ban_gpa, $eng_gpa, $math_gpa, $s_gpa, $ss_gpa, $r_gpa);
 
             $cgpa = round($student_cgpa );
             
@@ -88,7 +88,7 @@
     
     ?>
 
-                    <div class="panel-heading b-b"> <a href="#" class="font-bold">Add Result</a> </div>
+                    <div class="panel-heading b-b"> <a href="#" class="font-bold"><strong>Add Student Result </strong></a> </div>
 
                 <div class="addstu_message">
                        <?php

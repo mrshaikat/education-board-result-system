@@ -78,6 +78,12 @@ include_once "admin/libs/function.php";
 								<td>Institute</td>
 								<td><?php echo $search_result_data['ins'] ?></td>
 							</tr>
+
+							<tr>
+								<td>Grade</td>
+								<td><?php echo $search_result_data['tgrade'] ?></td>
+							</tr>
+
 							<tr>
 								<td>Result</td>
 								<td>
